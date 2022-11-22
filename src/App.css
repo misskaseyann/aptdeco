@@ -1,38 +1,96 @@
-.App {
-  text-align: center;
+@mixin for-phone-only {
+  @media (max-width: 599px) {
+    @content;
+  }
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@mixin for-desktop-up {
+  @media (min-width: 1200px) {
+    @content;
+  }
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) {
+    @content;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App {
+  padding: 20px;
+}
+
+.Furniture-Image {
+  object-fit: cover;
+  height: 384px;
+  width: 100%;
+}
+
+.Furniture-Image-Container {
+  background: #f0e3d1;
+  background-opacity: 50%;
+  padding: 20px;
+}
+
+.Furniture-List {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 40px;
+}
+
+.Furniture-Content {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.Location-Row {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  color: #736d6c;
+  font-size: 14px;
+}
+
+.Header {
+  font-weight: 800;
+}
+
+.Subheader {
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.Caption {
+  font-weight: 400;
+  color: #736d6c;
+  font-size: 12px;
+}
+
+.Input {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: fit-content;
+  margin-bottom: 24px;
 }
 
-.App-link {
-  color: #61dafb;
+.Space-Between > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (min-width: 768px) {
+  .Furniture-List {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  to {
-    transform: rotate(360deg);
+  .Furniture-Image {
+    height: 220px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .Furniture-List {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .Furniture-Image {
+    height: 268px;
   }
 }
